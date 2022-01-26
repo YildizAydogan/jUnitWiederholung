@@ -39,53 +39,25 @@ public class ParametirezedTesting {
     //Multipel Konditionen...
     //Jede Parameter wird mit Key and Value in den Test Method runned, getested.
     @ParameterizedTest
-    @CsvSource(value={"yildiz,YILDIZ","suleyman,SULEYMAN","kursat,KURSAT"})  //CSV: COmma seperated values
+    @CsvSource(value={"yildiz,YILDIZ","suleyman,SULEYMAN","kursat,KURSAT"})  //CSV: Comma seperated values
     void großbuchstabenumwandeln (String expectedgb,String actualname){
     assertEquals(expectedgb.toUpperCase(),actualname); //Failed
 
 
 
     }
-
-    @ParameterizedTest(name="Expected(BUYUKHARF):{0},actual(cevirilecek):{1}")//CsvFileSourse syntax
     //CSV : comma-separated values --> virgülle ayrılmış degerler
     //@CsvFileSource--> belirli bir dosyadan datalari okutarak test için parametre olarak kullanır.
     //@CsvFileSource--> src/test/resource klasoru altına konumlanmıs dosyaya direk ulaşır.
     // numLinesToSkip = a --> a:start line dan itibaren kalan satırlara parametre olarak method'da run edilir
-    @CsvFileSource(resources = "/data.csv",numLinesToSkip = 1)//data.csv dosyasındaki 1. satır haric verileri parametre olarak test methoduna run eder
-    void bykHrfCvrFile(String  cevrilecek ,String bykHrf){
+
+     @ParameterizedTest(name="Expected(beklenen):{0},actual(cevrilecek):{1}")//CsvFileSourse syntaxidir bu.yas boy pos gibi sutunlar olsaydi onlari da ekleyip artirma yaparak giderdik
+     @CsvFileSource(resources = "/data.csv",numLinesToSkip = 1)//data.csv dosyasındaki 1. satır haric verileri parametre olarak test methoduna run eder
+
+     void bykHrfCvrFile(String  cevrilecek ,String bykHrf){
         assertEquals(bykHrf,cevrilecek.toUpperCase());
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
